@@ -13,16 +13,16 @@ class Tennis {
       }
       return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
-
-    if (firstPlayerScoreTimes >= 3 && secondPlayerScoreTimes >= 3) {
-      if ((firstPlayerScoreTimes - secondPlayerScoreTimes).abs() == 1) {
-        return '${advPlayer()}_adv';
-      }
-      return '${advPlayer()}_win';
+    if (isGamePoint()) {
+      return isAdv() ? '${advPlayer()}_adv' : '${advPlayer()}_win';
     }
-
     return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
   }
+
+  bool isAdv() => (firstPlayerScoreTimes - secondPlayerScoreTimes).abs() == 1;
+
+  bool isGamePoint() =>
+      firstPlayerScoreTimes >= 3 && secondPlayerScoreTimes >= 3;
 
   String advPlayer() {
     return (firstPlayerScoreTimes > secondPlayerScoreTimes)
