@@ -3,32 +3,37 @@ class Tennis {
   int firstPlayerScoreTimes = 0;
 
   String score() {
+    var love = 'love';
+    var fifteen = 'fifteen';
+    var thirty = 'thirty';
+    var forty = 'forty';
+
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
-      return 'love_all';
+      return '${love}_all';
     }
     if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 0) {
-      return 'fifteen_love';
+      return '${fifteen}_$love';
     }
     if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 0) {
-      return 'thirty_love';
+      return '${thirty}_$love';
     }
     if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 0) {
-      return 'forty_love';
+      return '${forty}_$love';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 1) {
-      return 'love_fifteen';
+      return '${love}_${fifteen}';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
-      return 'love_thirty';
+      return '${love}_$thirty';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
-      return 'love_forty';
+      return '${love}_${forty}';
     }
     if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
-      return 'fifteen_all';
+      return '${fifteen}_all';
     }
     if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
-      return 'thirty_all';
+      return '${thirty}_all';
     }
     if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
       return 'deuce';
