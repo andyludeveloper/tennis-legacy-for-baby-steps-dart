@@ -1,35 +1,14 @@
 class Tennis {
   int secondPlayerScoreTimes = 0;
   int firstPlayerScoreTimes = 0;
+  var scoreLookUp = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'forty'};
 
   String score() {
-
-    var scoreLookUp = {
-      0 : 'love',
-      1 : 'fifteen',
-      2: 'thirty',
-      3: 'forty'
-    };
-
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
       return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
-    if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 0) {
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
-    }
-    if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 0) {
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
-    }
-    if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 0) {
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
-    }
-    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 1) {
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
-    }
-    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
-    }
-    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
+    if (firstPlayerScoreTimes >= 1 && secondPlayerScoreTimes >= 0 ||
+        firstPlayerScoreTimes == 0 && secondPlayerScoreTimes >= 1) {
       return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
@@ -38,12 +17,14 @@ class Tennis {
     if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
       return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
+
     if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
       return 'deuce';
     }
     if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 4) {
       return 'deuce';
     }
+
     if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
       return 'Andy_adv';
     }
