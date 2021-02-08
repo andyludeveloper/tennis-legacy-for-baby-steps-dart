@@ -1,6 +1,9 @@
 class Tennis {
   int secondPlayerScoreTimes = 0;
   int firstPlayerScoreTimes = 0;
+  String firstPlayerName = 'Andy';
+  String secondPlayerName = 'Josh';
+
   var scoreLookUp = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'forty'};
 
   String score() {
@@ -11,23 +14,20 @@ class Tennis {
       return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
 
-    if (firstPlayerScoreTimes >= 1 && secondPlayerScoreTimes >= 0 ||
-        firstPlayerScoreTimes == 0 && secondPlayerScoreTimes >= 1) {
-      if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
-        return 'Andy_adv';
+    if (firstPlayerScoreTimes >= 3 && secondPlayerScoreTimes >= 3) {
+      if ((firstPlayerScoreTimes - secondPlayerScoreTimes).abs() == 1) {
+        return '${advPlayer()}_adv';
       }
-      if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 4) {
-        return 'Josh_adv';
-      }
-      if (firstPlayerScoreTimes == 5 && secondPlayerScoreTimes == 3) {
-        return 'Andy_win';
-      }
-      if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 5) {
-        return 'Josh_win';
-      }
-      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
+      return '${advPlayer()}_win';
     }
-    return null;
+
+    return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
+  }
+
+  String advPlayer() {
+    return (firstPlayerScoreTimes > secondPlayerScoreTimes)
+        ? firstPlayerName
+        : secondPlayerName;
   }
 
   bool isDeuce() => firstPlayerScoreTimes >= 3;
