@@ -7,17 +7,21 @@ class Tennis {
   var scoreLookUp = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'forty'};
 
   String score() {
-    if (isSameScore()) {
-      if (isDeuce()) {
-        return 'deuce';
-      }
-      return '${scoreLookUp[firstPlayerScoreTimes]}_all';
-    }
-    if (isGamePoint()) {
-      return isAdv() ? '${advPlayer()}_adv' : '${advPlayer()}_win';
-    }
-    return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
+    return isSameScore()
+        ? isDeuce()
+            ? 'deuce'
+            : sameScore()
+        : isGamePoint()
+            ? advState()
+            : lookupScore();
   }
+
+  String advState() => isAdv() ? '${advPlayer()}_adv' : '${advPlayer()}_win';
+
+  String sameScore() => '${scoreLookUp[firstPlayerScoreTimes]}_all';
+
+  String lookupScore() =>
+      '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
 
   bool isAdv() => (firstPlayerScoreTimes - secondPlayerScoreTimes).abs() == 1;
 
