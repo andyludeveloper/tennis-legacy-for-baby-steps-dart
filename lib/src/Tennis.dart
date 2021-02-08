@@ -1,44 +1,55 @@
 class Tennis {
-  var player1Name = 'Andy';
-  var player2Name = 'Josh';
+  int secondPlayerScoreTimes = 0;
+  int firstPlayerScoreTimes = 0;
 
-  var firstPlayerScoreTimes = 0;
-
-  var secondPlayerScoreTimes = 0;
-
-  var scoreLookUpMap = {0: 'love', 1: 'fifteen', 2: 'thirty', 3:'forty'};
-
-  String score() => isSameScore()
-        ? isDeuce()
-            ? 'deuce'
-            : sameScore()
-        : isLookupScore()
-            ? lookupScore()
-            : advState();
-
-  String advState() {
-    return isAdv() ? '${advPlayer()}_adv' : '${advPlayer()}_won';
+  String score() {
+    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
+      return 'love_all';
+    }
+    if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 0) {
+      return 'fifteen_love';
+    }
+    if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 0) {
+      return 'thirty_love';
+    }
+    if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 0) {
+      return 'forty_love';
+    }
+    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 1) {
+      return 'love_fifteen';
+    }
+    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
+      return 'love_thirty';
+    }
+    if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
+      return 'love_forty';
+    }
+    if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
+      return 'fifteen_all';
+    }
+    if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
+      return 'thirty_all';
+    }
+    if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
+      return 'deuce';
+    }
+    if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 4) {
+      return 'deuce';
+    }
+    if (firstPlayerScoreTimes == 4 && secondPlayerScoreTimes == 3) {
+      return 'Andy_adv';
+    }
+    if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 4) {
+      return 'Josh_adv';
+    }
+    if (firstPlayerScoreTimes == 5 && secondPlayerScoreTimes == 3) {
+      return 'Andy_win';
+    }
+    if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 5) {
+      return 'Josh_win';
+    }
+    return null;
   }
-
-  String lookupScore() =>
-      '${scoreLookUpMap[firstPlayerScoreTimes]}_${scoreLookUpMap[secondPlayerScoreTimes]}';
-
-  bool isLookupScore() =>
-      firstPlayerScoreTimes < 4 && secondPlayerScoreTimes < 4;
-
-  String sameScore() => '${scoreLookUpMap[firstPlayerScoreTimes]}_all';
-
-  String advPlayer() {
-    return (firstPlayerScoreTimes > secondPlayerScoreTimes)
-        ? player1Name
-        : player2Name;
-  }
-
-  bool isAdv() => (firstPlayerScoreTimes - secondPlayerScoreTimes).abs() == 1;
-
-  bool isDeuce() => firstPlayerScoreTimes >= 3;
-
-  bool isSameScore() => firstPlayerScoreTimes == secondPlayerScoreTimes;
 
   void firstPlayerScore() {
     firstPlayerScoreTimes++;

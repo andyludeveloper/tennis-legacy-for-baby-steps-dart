@@ -68,12 +68,12 @@ void main() {
   test('player1Won', () {
     givenFirstPlayerScore(5);
     givenSecondPlayerScore(3);
-    shouldBe('Andy_won');
+    shouldBe('Andy_win');
   });
   test('player2Won', () {
     givenFirstPlayerScore(3);
     givenSecondPlayerScore(5);
-    shouldBe('Josh_won');
+    shouldBe('Josh_win');
   });
 }
 
