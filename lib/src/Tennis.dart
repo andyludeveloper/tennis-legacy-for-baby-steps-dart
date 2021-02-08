@@ -3,37 +3,40 @@ class Tennis {
   int firstPlayerScoreTimes = 0;
 
   String score() {
-    var love = 'love';
-    var fifteen = 'fifteen';
-    var thirty = 'thirty';
-    var forty = 'forty';
+
+    var scoreLookUp = {
+      0 : 'love',
+      1 : 'fifteen',
+      2: 'thirty',
+      3: 'forty'
+    };
 
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 0) {
-      return '${love}_all';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
     if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 0) {
-      return '${fifteen}_$love';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 0) {
-      return '${thirty}_$love';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 0) {
-      return '${forty}_$love';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 1) {
-      return '${love}_${fifteen}';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 2) {
-      return '${love}_$thirty';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 0 && secondPlayerScoreTimes == 3) {
-      return '${love}_${forty}';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_${scoreLookUp[secondPlayerScoreTimes]}';
     }
     if (firstPlayerScoreTimes == 1 && secondPlayerScoreTimes == 1) {
-      return '${fifteen}_all';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
     if (firstPlayerScoreTimes == 2 && secondPlayerScoreTimes == 2) {
-      return '${thirty}_all';
+      return '${scoreLookUp[firstPlayerScoreTimes]}_all';
     }
     if (firstPlayerScoreTimes == 3 && secondPlayerScoreTimes == 3) {
       return 'deuce';
